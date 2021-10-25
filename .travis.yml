@@ -28,4 +28,4 @@ deploy:
     file: travis-ci-go-practice.zip
     skip_cleanup: true
     on:
-      tags: true
+      tags: false
