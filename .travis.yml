@@ -2,6 +2,10 @@ language: go
 
 go:
   - 1.16.x
+install:
+  - go get -u github.com/securego/gosec/v2/cmd/gosec
+  - export PATH=$PATH:$HOME/gopath/bin
+
 
 script:
   - go fmt ./...
