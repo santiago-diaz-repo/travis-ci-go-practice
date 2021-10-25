@@ -4,7 +4,7 @@ go:
   - 1.16.x
 
 before_install:
-  - chmod +x travis.gofmt.sh
+  - chmod +x .travis.gofmt.sh
 
 install:
   - go install github.com/securego/gosec/v2/cmd/gosec@latest
