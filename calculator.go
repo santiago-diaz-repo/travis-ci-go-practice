@@ -6,3 +6,7 @@ type Calculator struct {
 func (c Calculator) Sum(i int, i2 int) int {
 	return i + i2
 }
+
+func (c Calculator) Subtract(i int, i2 int) int {
+	return i - i2
+}
