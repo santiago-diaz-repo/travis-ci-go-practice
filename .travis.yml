@@ -2,11 +2,16 @@ language: go
 
 go:
   - 1.16.x
+
+
 install:
   - go get -u github.com/securego/gosec/v2/cmd/gosec
+  - go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.42.1
   - export PATH=$PATH:$HOME/gopath/bin
 
 
 script:
   - go fmt ./...
+  - golangci-lint run ./...
   - go test -v ./...
+  - gosec -tests ./...
