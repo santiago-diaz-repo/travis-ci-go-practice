@@ -5,13 +5,10 @@ import (
 	"testing"
 )
 
-
-func Test_Sum(t *testing.T){
+func Test_Sum(t *testing.T) {
 	want := 11
 	subject := Calculator{}
-	got := subject.Sum(5,6)
+	got := subject.Sum(5, 6)
 
 	assert.Equal(t, want, got, "they should not be equal")
 }
-
-
