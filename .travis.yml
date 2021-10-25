@@ -12,9 +12,22 @@ install:
   - go get -v -t ./...
   - export PATH=$PATH:$HOME/gopath/bin
 
-
 script:
   - ./.travis.gofmt.sh
   - golangci-lint run ./...
   - go test -v ./...
   - gosec -tests ./...
+  - go build .
+
+before_deploy:
+  - cd ..
+  - tar -zcf ${TRAVIS_BUILD_DIR}santiago-diaz-repo/travis-ci-go-practice-${TRAVIS_TAG}-${TRAVIS_BUILD_NUMBER}.tar.gz santiago-diaz-repo/travis-ci-go-practice
+
+deploy:
+  - provider: releases
+    api_key:
+      secure: "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"
+    file: ${TRAVIS_BUILD_DIR}santiago-diaz-repo/travis-ci-go-practice-${TRAVIS_TAG}-${TRAVIS_BUILD_NUMBER}.tar.gz
+    skip_cleanup: true
+    on:
+      tags: true
