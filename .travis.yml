@@ -22,7 +22,7 @@ script:
 
 deploy:
   # Use Github pages deploy process
-  provider: releases
+  provider: pages
   # Keep builded pages
   skip-cleanup: true
   # Directory where your generated files are located
