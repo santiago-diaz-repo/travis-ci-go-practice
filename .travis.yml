@@ -20,16 +20,19 @@ script:
   - go build .
   - rm -f 'travis-ci-go-practice.zip' | zip -r 'travis-ci-go-practice.zip' *.go
 
-
 deploy:
-  - provider: releases
-    api_key:
-      secure: "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"
-    file: travis-ci-go-practice.zip
-    skip_cleanup: true
-    on:
-      repo: santiago-diaz-repo/travis-ci-go-practice
-      tags: false
-      branches:
-        only:
-          - main
+  # Use Github pages deploy process
+  provider: pages
+  # Keep builded pages
+  skip-cleanup: true
+  # Directory where your generated files are located
+  file: travis-ci-go-practice.zip
+  # Github security/auth token
+  github-token: $GITHUB_TOKEN
+  # Incremental commit to keep old build/files from previous deployments
+  keep-history: true
+  # Git branch on which it should deploy (master, gh-pages, foo...)
+  target_branch: main
+  on:
+    # Which branch on commit/push will trigger deployment
+    branch: main
